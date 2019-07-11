@@ -25,7 +25,6 @@ function calculateResults(e) {
         totalInterest.value = ((mountly * calculatedPayments) - principal).toFixed(2);
     } else {
         showError('Please check your numbers');
-        console.log("Error");
     }
 
     e.preventDefault();
@@ -48,4 +47,11 @@ function showError(error) {
 
     //inserterror above heading
     card.insertBefore(errorDiv, heading);
+
+    //clear error after 3 seconds
+    setTimeout(clearError, 3000);
+}
+
+function clearError() {
+    document.querySelector('.alert').remove();
 }
