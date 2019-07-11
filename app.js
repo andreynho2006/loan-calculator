@@ -24,8 +24,28 @@ function calculateResults(e) {
         totalPayment.value = (mountly * calculatedPayments).toFixed(2);
         totalInterest.value = ((mountly * calculatedPayments) - principal).toFixed(2);
     } else {
-        console.log('Please check your numbers');
+        showError('Please check your numbers');
+        console.log("Error");
     }
 
     e.preventDefault();
+}
+
+// Show Error
+function showError(error) {
+    //create a div
+    const errorDiv = document.createElement('div');
+    // add bootstrap class
+
+    //get elements for shoe
+    const card = document.querySelector('.card');
+    const heading = document.querySelector('.heading');
+
+
+    errorDiv.className = 'alert alert-danger';
+    //create text node and append to div
+    errorDiv.appendChild(document.createTextNode(error));
+
+    //inserterror above heading
+    card.insertBefore(errorDiv, heading);
 }
